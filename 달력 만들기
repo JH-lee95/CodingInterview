@@ -20,11 +20,11 @@ start_day = 2  # Tuesday
 last_day = 31
 
 print('\tS\tM\tT\tW\tT\tF\tS')
-for i in range(start_day):  #start_day 즉 이틀 만큼의 공백을 채워줍니다
+for i in range(start_day):  	#start_day 즉 이틀 만큼의 공백을 채워줍니다
 	print('\t', end='')
-for i in range(1,last_day+1):  #달력에 숫자즐 채워넣기 위해 1~31까지 루프를 돌아줍니다.
-	if i%7!=5:            #7로 나누었을 때 나머지가 5가 아니라면 일직선으로 숫자를 채워줍니다.
+for i in range(1,last_day+1):  	#달력에 숫자즐 채워넣기 위해 1~31까지 루프를 돌아줍니다.
+	if i%7!=5:            	#7로 나누었을 때 나머지가 5가 아니라면 일직선으로 숫자를 채워줍니다.
 		print('\t%d' %i, end='')
-	elif i%7==5:  #7로 나누었을 때 나머지가 5라면 줄을 바꾸어줍니다. ex)19 이후 20은 다음 줄로 이동되어 입력됩니다. 
+	elif i%7==5:  		#7로 나누었을 때 나머지가 5라면 줄을 바꾸어줍니다. ex)19 이후 20은 다음 줄로 이동되어 입력됩니다. 
 		print('\t%d\n' %i)
-	##코드 종료##
+##코드 종료##

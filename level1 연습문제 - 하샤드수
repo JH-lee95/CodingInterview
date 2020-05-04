@@ -1,0 +1,12 @@
+##코드  시작##
+
+def solution(x):
+    
+    temp=[int(a) for a in str(x)]
+    y=sum(temp)
+    
+    if x%y!=0:
+        return False
+    return True
+    
+##코드 종료

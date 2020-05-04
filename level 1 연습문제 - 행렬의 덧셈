@@ -1,0 +1,32 @@
+프로그래머스 코딩테스트 연습
+level 1 연습문제
+
+
+
+
+1. List comprehension 을 이용한 한줄 코드
+##코드 시작##
+def solution(arr1, arr2):
+    
+    
+    answer=[[c+d for c,d in zip(a,b)]for a,b in zip(arr1,arr2)]
+    
+    return answer
+ ##코드 종료##
+ 
+ 
+ 2. numpy 를 사용한 간단한 코드
+ ##코드 시작##
+import numpy as np
+
+def solution(arr1, arr2):
+    
+    arr1=np.array(arr1)
+    arr2=np.array(arr2)
+    
+    answer=(arr1+arr2).tolist()   #numpy array 타입을 list 형태로 바꿔줌
+    
+    return answer
+ 
+ 
+ ##코드 종료##

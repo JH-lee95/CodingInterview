@@ -1,0 +1,18 @@
+문제 설명
+함수 solution은 정수 n을 매개변수로 입력받습니다. n의 각 자릿수를 큰것부터 작은 순으로 정렬한 새로운 정수를 리턴해주세요. 예를들어 n이 118372면 873211을 리턴하면 됩니다.
+
+
+
+1. list comprehension을 연습중이다!
+2. 입력인자 n을 스트링으로 변환하여
+3. 한 문자씩 리스트에 넣어 내림차순으로 정렬한다.
+4. 정렬된 문자들을 join 함수로 하나로 합쳐준다.
+5. int를 이용하여 정수변환하여 마무리
+
+##코드 시작##
+
+def solution(n):
+    answer=int("".join(sorted([i for i in str(n)],reverse=True)))
+    return answer
+
+##코드 종료##

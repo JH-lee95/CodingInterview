@@ -1,0 +1,44 @@
+프로그래머스 코딩 테스트 연습
+
+문제 설명
+문자열 s의 길이가 4 혹은 6이고, 숫자로만 구성돼있는지 확인해주는 함수, solution을 완성하세요. 예를 들어 s가 a234이면 False를 리턴하고 1234라면 True를 리턴하면 됩니다.
+
+
+
+
+
+코드컨셉:
+1. try, except 구문으로 해결하였다.
+2. 먼저 문자열의 길이가 4 또는 6인지 확인한다.
+3. 그 이후 문자열을 int로 변환이 가능하다면 (즉, 문자열을 이루고 있는 모든 요소가 숫자라면) True를 반환한다.
+4. 불가능하다면, False를 반환한다.
+
+
+ver1.
+## 코드 시작 ##
+
+def solution(s):
+    
+    if len(s)==4 or len(s)==6:
+        try:
+            s=int(s)
+            return True
+        except:
+            return False
+    else:
+        return False
+
+
+## 코드 종료 ##
+
+
+ver.2
+## 코드 시작 ##
+
+def alpha_string46(s):
+    return s.isdigit() and len(s) in (4, 6)
+
+## 코드 종료 ##
+
+단 한줄로 끝내는 모범답안이다. isdigit()를 활용하 s가 숫자로 이루어져있는지 확인하고 and로 조건절을 같이 묶었다.
+역시 파이썬!

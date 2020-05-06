@@ -1,0 +1,22 @@
+흔하디 흔한 최소공배수와 최대공약수 구하는 문제.
+유클리드 호제법을 이용하여 최대공약수를 구할 수 있다.
+다음 부터는 그냥 math 모듈에서 gcd를 임포트하자.....
+
+
+## 코드 시작 ##
+
+def solution(n, m):
+    smaller=min(n,m)
+    bigger=max(n,m)
+    
+    
+    answer=[]
+    while smaller:  
+        smaller,bigger=bigger%smaller,smaller
+        gcm=bigger
+    answer.append(gcm)  #최대공약수
+    answer.append((n*m)/gcm) #최소공배수
+    
+    return answer
+    
+## 코드 종료 ##

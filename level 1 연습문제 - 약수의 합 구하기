@@ -1,0 +1,15 @@
+프로그래머스 코딩 테스트 연습
+
+주어진 숫자 n의 모든 약수의 합을 구하는 문제
+
+
+
+list comprehension을 사용한 이런 간결한 코드를 볼 때마다 파이썬의 힘을 느끼게 된다.
+
+## 코드 시작 ##
+
+def solution(n):
+    return sum[num for num in range(i,n+1) if num%i==0]
+
+
+## 코드 종료

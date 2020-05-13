@@ -1,0 +1,37 @@
+프로그래머스 코딩테스트 연습
+
+
+문제 설명
+2016년 1월 1일은 금요일입니다. 2016년 a월 b일은 무슨 요일일까요? 두 수 a ,b를 입력받아 2016년 a월 b일이 무슨 요일인지 리턴하는 함수, solution을 완성하세요. 요일의 이름은 일요일부터 토요일까지 각각 SUN,MON,TUE,WED,THU,FRI,SAT
+
+입니다. 예를 들어 a=5, b=24라면 5월 24일은 화요일이므로 문자열 TUE를 반환하세요.
+
+제한 조건
+2016년은 윤년입니다.
+2016년 a월 b일은 실제로 있는 날입니다. (13월 26일이나 2월 45일같은 날짜는 주어지지 않습니다)
+
+
+
+코드컨셉 :
+1. 날짜를 다룰 수 있게 해주는 datetime 모듈을 불러와 간단하게 해결하였다.
+2. weekday() 함수는 0~6 까지 요일에 해당하는 숫자를 출력해준다. (각 숫자와 요일은 아래 date_dict 변수 참고)
+3. date 변수에 2016년 a월 b일을 저장하고 이 날의 요일에 해당하는 숫자를 구한다.
+4. 그 숫자를 key로 하여 date_dict 에서 value를 뽑아낸다. 
+
+
+## 코드 시작 ##
+
+import datetime as dt
+
+
+def solution(a, b):
+    
+    date_dict={0:"MON", 1:"TUE", 2:"WED", 3:"THU", 4:"FRI", 5:"SAT", 6:"SUN"}   
+    
+    date=dt.datetime(2016,a,b).weekday()
+    
+    answer=date_dict[date]
+    return answer
+
+
+## 코드 종료 ##

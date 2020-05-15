@@ -1,0 +1,32 @@
+프로그래머스 코딩 테스트 연습
+문제설명 : https://programmers.co.kr/learn/courses/30/lessons/42889
+
+코드를 짜는 것보다, 문제를 이해하는게 더 어려운 것 같다...... (그럼 문제만 이해한다면 코드는 금방 짤 수 있는 건가?)
+
+
+## 코드 시작 ##
+
+def solution(N, stages):
+    
+    stage_dict={}           #각 스테이지별 실패율을 기록할 stage_dict 딕셔너리 객체를 생성한다. (스테이지 : 실패율)
+    survivor=len(stages)    #남은 사람들의 숫자
+    
+    for i in range(1,N+1):
+        stage_dict.setdefault(i,0)            #1~N번째 스테이지를 돌면서 초기값을 0으로 설정
+        
+    for i in stage_dict:
+        try:   #zerodivision error 방지를 위한 try,except 구문 
+            stage_dict[i]=stages.count(i)/survivor          #i번째 스테이지의 실패율
+            survivor-=stages.count(i)            #남은 총 생존자의 숫자는, 이번 라운드에서 탈락한 사람의 수를 뺀 것
+        except:       #예를 들어 3스테이지 까지 있는 게임에서 모두 1스테이지에서 탈락한다면 2라운드 survivor는 0이 에러 발생, 이를 방지
+            stage_dict[i]=0
+
+    temp=sorted(stage_dict.items(),key=lambda x:x[1],reverse=True)    #스테이지별 실패율을 기준으로 내림차순 
+    
+    answer=[i[0] for i in temp]
+    
+     
+    return answer
+
+
+## 코드 종료 ##

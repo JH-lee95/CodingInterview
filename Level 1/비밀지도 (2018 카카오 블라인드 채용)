@@ -1,0 +1,43 @@
+프로그래머스 코딩 테스트 연습
+문제설명은 여기 : https://programmers.co.kr/learn/courses/30/lessons/17681
+
+
+
+
+
+ 코드 컨셉 :
+ 1. 이번 코딩의 핵심은 2진수 변환과 zfill 함수를 통해 자릿수를 맞춰주는 것이다.
+ 2. zfill 함수는 자릿수를 인자로 받아, 앞에 0을 채워 놓는다.  ex) 123.zfill(5) -->00123, 123.zfill(4)--->0123
+
+
+## 코드 시작 ##
+
+def solution(n, arr1, arr2):
+    
+    arr1_bin=[format(i,'b').zfill(n) for i in arr1]
+    arr2_bin=[format(i,'b').zfill(n) for i in arr2]
+   
+    temp1=[]
+    for i in arr1_bin:
+        new1=i.replace("1","#").replace("0"," ")
+        temp1.append(new1)
+        
+    temp2=[]
+    for i in arr2_bin:
+        new2=i.replace("1","#").replace("0"," ")
+        temp2.append(new2)
+    
+    answer=[]
+    for x,y in zip(temp1,temp2):
+        temp=""
+        for i,j in zip(x,y):
+            if i==j:
+                temp+=i
+            else:
+                temp+="#"
+        answer.append(temp)
+    
+    return answer
+
+
+## 코드 종료 ##

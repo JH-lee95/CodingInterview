@@ -41,3 +41,19 @@ def solution(n, arr1, arr2):
 
 
 ## 코드 종료 ##
+
+ver2.
+다른 사람의 코드를 보니 더 짧고 간단하게 푸는 분도 많았다. 아직 갈길이 멀다......
+
+def solution(n, arr1, arr2):
+    answer = []
+    for i,j in zip(arr1,arr2):
+        a12 = str(bin(i|j)[2:])
+        a12=a12.rjust(n,'0')
+        a12=a12.replace('1','#')
+        a12=a12.replace('0',' ')
+        answer.append(a12)
+    return answer
+
+이런 식으로 비트 연산자를 활용해서, 코드의 길이를 현저히 줄일 수 있다. 
+1001 | 0110 -> 1111 (비트연산자의 "|" 는 둘 중 하나가 1이면 1을 반환)

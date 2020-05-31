@@ -39,3 +39,32 @@ def solution(progresses, speeds):
     return answer
     
  ## 코드 종료 ##
+ 
+ 
+ -----------------
+ 다른 사람의 풀이
+ 
+ ## 코드 시작 ##
+ 
+ def solution(progresses, speeds):
+    print(progresses)
+    print(speeds)
+    answer = []
+    time = 0
+    count = 0
+    while len(progresses)> 0:
+        if (progresses[0] + time*speeds[0]) >= 100:
+            progresses.pop(0)
+            speeds.pop(0)
+            count += 1
+        else:
+            if count > 0:
+                answer.append(count)
+                count = 0
+            time += 1
+    answer.append(count)
+    return answer
+ 
+ ## 코드 종료 ##
+ 
+ 문제 자체가 스택과 큐를 이용한 문제인데, 위의 풀이는 그 주제에 정확히 부합하는 풀이방법이다.

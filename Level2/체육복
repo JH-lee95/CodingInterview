@@ -1,0 +1,57 @@
+프로그래머스 코딩테스트 연습
+https://programmers.co.kr/learn/courses/30/lessons/42862
+
+
+ver1. : 이중 for구문 때문에 시간복잡도가 O(n^2) 이 된다. 
+## 코드 시작 ##
+
+def solution(n, lost, reserve):
+    
+    student=n-len(lost)
+    
+    borrowed=[]
+    having=[]
+    
+    for i in reserve:
+        if i in lost:
+            borrowed.append(i)
+    for j in lost:
+        if j in reserve:
+            having.append(j)
+                    
+    for i in reserve:
+        for j in lost:
+            if i not in borrowed and j not in having:
+                if i-1==j or i+1==j:
+                    borrowed.append(i)
+                    having.append(j)
+                    
+    return student+len(having)
+
+
+## 코드 종료 ##
+
+
+ver2. 시간복잡도를 O(3n) 까지 줄인 다른사람의 풀이이다. clothes라는 변수에 사람 수 만큼 1을 채워넣는 리스트를 만드는게 핵심
+## 코드 시작 ##
+def solution(n, lost, reserve):
+    clothes=[1]*n
+    
+    for each in lost:
+        clothes[each-1]-=1
+    for each in reserve:
+        clothes[each-1]+=1
+    for i in range(n):
+        if clothes[i]==0:
+            if i-1>0 and clothes[i-1]==2:
+                clothes[i-1]-=1
+                clothes[i]+=1
+            elif i+1<n and clothes[i+1]==2:
+                clothes[i+1]-=1
+                clothes[i]+=1
+            else:
+                n-=1  
+    
+    return n
+
+## 코드 종료 ##

@@ -1,0 +1,25 @@
+프로그래머스 코딩테스트 연습
+https://programmers.co.kr/learn/courses/30/lessons/12982
+
+
+
+전형적인 그리디(탐욕법)문제이다.
+리스트내 최솟값을, 주어진 예산에서 계속 빼 나가면 된다.
+
+## 코드 시작 ##
+def solution(d, budget):
+
+    cnt=0
+    while budget>=0:
+        
+        if len(d)==0:
+            break
+        if budget-min(d)>=0:
+                budget-=min(d)
+                cnt+=1
+                d.remove(min(d))
+        else:
+            break        
+    return cnt
+    
+## 코드 종료 ##

@@ -1,0 +1,22 @@
+https://www.hackerrank.com/challenges/sock-merchant/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=warmup
+
+
+
+
+
+## 코드 시작 ##
+
+def sockMerchant(n, ar):
+    a=Counter(ar)       #주어진 리스트내 원소들의 개수를 구함
+    b=list(a.values())  #a 딕셔너리의 value만 모음
+
+    answer=0
+
+    for idx,num in enumerate(b):
+        while b[idx]>1:   #값이 1 이상인 동안(남은 값이 0 또는 1이라면 더 이상 짝지을 양말이 없다는 의미)
+            b[idx]-=2     #-2 씩 빼줌(양말 한쌍을 찾음)
+            answer+=1     #양말 한쌍씩 찾을때마다 정답에 +1
+    return answer
+
+
+## 코드 종료 ##

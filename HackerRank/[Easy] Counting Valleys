@@ -1,0 +1,19 @@
+https://www.hackerrank.com/challenges/counting-valleys/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=warmup
+
+
+## 코드 시작 ##
+
+def countingValleys(n, s):
+    alt=0
+    valley=0
+    for i in s:
+        if i =="U":
+            alt+=1
+        else:
+            if alt==0:
+                valley+=1
+            alt-=1
+    return valley
+
+
+## 코드 종료 ##

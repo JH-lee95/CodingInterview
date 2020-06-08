@@ -1,0 +1,11 @@
+https://www.hackerrank.com/challenges/repeated-string/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=warmup
+
+
+## 코드 시작 ##
+
+def repeatedString(s, n):
+    a=s.count('a')
+    num_of_a=n//len(s)*a + s[:n%len(s)].count('a')
+    return num_of_a
+
+## 코드 종료 ##

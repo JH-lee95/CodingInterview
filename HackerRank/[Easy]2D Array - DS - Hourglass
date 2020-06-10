@@ -1,0 +1,22 @@
+https://www.hackerrank.com/challenges/2d-array/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=arrays
+
+
+## 코드 시작 ##
+
+def hourglassSum(arr):
+    answer=[]
+
+    col=0
+    row=0
+
+    while row<4:
+        if col<4:
+            answer.append(sum(arr[row][col:col+3])+arr[row+1][col+1]+sum(arr[row+2][col:col+3]))
+            col+=1
+        if col==4:
+            row+=1
+            col=0
+    return max(answer)
+
+
+## 코드 종료 ##

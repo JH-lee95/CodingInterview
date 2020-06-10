@@ -1,0 +1,36 @@
+프로그래머스 코딩테스트 연습
+https://programmers.co.kr/learn/courses/30/lessons/42839
+
+
+
+
+
+## 코드 시작 ##
+from itertools import permutations  #모든 경우의 수를 찾기 위해 순열 이용
+
+def is_prime(n):  #입력받은 숫자의 소수여부 확인
+    if n<2:
+        return False
+    if n==2 or n==3:
+        return True
+    if n%2==0:
+        return False
+    
+    for k in range(3,int(n**0.5+1),2): #3부터 2씩 증가 : 4이상 짝수는 무조건 소수가 아니므로, 홀수만 체크, 제곱근+1 까지만 약수를 체크(시간절약)
+        if n%k==0:
+            return False
+    return True
+
+def solution(numbers):
+    answer=set()  #중복 방지를 위한 집합 선언
+    for i in range(1,len(numbers)+1):   #i자리의 숫자로 이루어진 모든 경우의 수 파악
+        cases=set(list(map("".join,permutations(list(numbers),i)))) 
+        
+        for i in cases:
+            if is_prime(int(i)):
+                answer.add(int(i))
+    return len(answer)
+
+
+
+## 코드 종료 ##

@@ -1,0 +1,15 @@
+https://www.hackerrank.com/challenges/ctci-ransom-note/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=dictionaries-hashmaps
+
+
+
+## 코드 시작 ##
+def checkMagazine(magazine, note):
+    m=Counter(magazine)
+    n=Counter(note)
+
+    if (n-m).values():
+        print("No")
+    else:
+        print("Yes")
+
+## 코드 종료 ##

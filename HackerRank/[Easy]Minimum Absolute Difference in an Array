@@ -1,0 +1,10 @@
+https://www.hackerrank.com/challenges/minimum-absolute-difference-in-an-array/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=greedy-algorithms
+
+
+
+## 코드 시작 ##
+
+def minimumAbsoluteDifference(A):
+    A.sort() ; return min( A[i+1]-A[i] for i in range(n-1) )
+
+## 코드 종료 ##

@@ -1,0 +1,21 @@
+https://www.hackerrank.com/challenges/30-binary-search-trees/problem
+
+
+Binary Search Tree의 깊이를 구하는 문제
+재귀를 활용하여 해결했다.
+
+
+## 코드 시작 ##
+
+def getHeight(self,root):
+    #Write your code here
+    if root:
+        left=self.getHeight(root.left)
+        right=self.getHeight(root.right)
+        return max(left,right)+1
+
+    else:
+        return -1
+
+
+## 코드 종료 ##

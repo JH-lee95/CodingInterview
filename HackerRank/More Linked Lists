@@ -1,0 +1,24 @@
+연결리스트는 머리로는 이해해도 항상 구현하려고 하면 손이 안움직이는 것 같다......
+
+아래의 코드는 연결리스트내 중복된 값을 제거하는 코드이다.
+
+
+
+## 코드 시작 ##
+
+def removeDuplicates(self,head):
+    #Write your code here
+
+    h=head
+
+    while head.next:  #head.next가 존재하는 동안 (다음에 오는 값이 없을 때는 멈춤)
+        if head.data==head.next.data: #현재 값과, 다음에 오는 값이 같을 때(중복)
+            head.next=head.next.next #중복을 삭제하기 위해 다음값을 건너뛰고 다다음 값으로 연결한다.
+        else:
+            head=head.next
+
+    return h
+
+
+
+## 코드 종료 ##

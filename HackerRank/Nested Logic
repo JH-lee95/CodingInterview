@@ -1,0 +1,52 @@
+https://www.hackerrank.com/challenges/30-nested-logic/forum
+
+datetime 모듈을 활용한 간편한 날짜 계산
+
+
+## 코드 시작 ##
+
+from datetime import datetime
+
+def cal_date(nums):
+    nums=nums.split(" ")
+
+    y=int(nums[2])
+    m=int(nums[1])
+    d=int(nums[0])
+
+    date=datetime(y,m,d)
+    
+
+    return date
+
+
+def cal_price(actual,due):
+    ac_date=cal_date(actual)
+    due_date=cal_date(due)
+
+    if ac_date<=due_date:
+        return 0
+
+    if ac_date.year>due_date.year:
+        return 10000
+
+    else:
+        if ac_date.month>due_date.month:
+            return (ac_date.month-due_date.month)*500
+            
+        else:
+            if ac_date<=due_date:
+                return 0
+            else:
+                return (ac_date-due_date).days * 15
+
+        
+
+
+
+ipt1=input()
+ipt2=input()
+
+print(cal_price(ipt1,ipt2))
+
+## 코드 종료 ##

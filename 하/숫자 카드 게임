@@ -1,0 +1,9 @@
+N=int(input())
+M=int(input())
+
+arr=[]
+
+for i in range(N):
+  arr.append(list(map(int,input().split())))
+
+result=max([min(i) for i in arr])

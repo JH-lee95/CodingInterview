@@ -1,0 +1,51 @@
+N크기의 배열에서
+M번 더해서 가장 큰 수를 만든다.
+단 특정 인덱스의 숫자가 K번 까지만 연속으로 더해질 수 있음
+
+
+#---------------------내 풀이---------------------
+
+N,M,K = map(int,input().split(","))
+
+arr=list(map(int,input().split(",")))
+check=0
+result=0
+
+arr=sorted(arr)
+
+while M>0:
+  if check<K:
+    result += arr[-1]
+    M-=1
+    check += 1
+  else:
+    result += arr[-2]
+    M-=1
+    check=0 
+
+print(result)
+
+#---------------------내 풀이---------------------
+
+
+#---------------------모범답안---------------------
+#배열이 크기 N이 아주 커질 경우에도 사용 가능 (수열이용)
+
+N,M,K = map(int,input().split(","))
+arr=list(map(int,input().split(",")))
+arr.sort()
+
+result=0
+
+repeat=K*arr[-1]+arr[-2]  #가장 큰 수와 그 다음 수의 합
+
+result += M//(K+1)*repeat #가장 큰 수 * K + 그 다음 수 *1이 반복적으로 나오기 때문에, M을 (K+1)로 나눈 만큼의 횟수가 반복됨
+
+result += M%(K+1) * arr[-1] #나누어 떨어지지 않는 경우, M을 K+1로 나눈 나머지 만큼 가장 큰 수를 곱해줌
+
+print(result)
+
+#---------------------모범답안---------------------
+
+
+

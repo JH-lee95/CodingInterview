@@ -1,0 +1,40 @@
+#-----------내 풀이------------
+n,k = map(int,input().split())
+
+result=0
+
+while n>1:
+  if n%k==0:
+    n=n/k
+    result+=1
+  else:
+    n-=1
+    result+=1
+
+print(result)
+#-----------내 풀이------------
+
+
+#-----------모범답안------------
+
+#n이 무수히 커져도 실행속도 보장
+
+n,k = map(int,input().split())
+result =0 
+
+while True:
+
+  #(N==K로 나누어 떨어지는 수)가 될 때 까지 1씩 빼기
+
+  target = (n//k)*k    # n의 k로 나누어 정수몫을 구하고 그 몫의 k 배수 구하기 ex)27//4 = 6, 6*4=24
+  result += (n-target) #n에서 target만큼 빼면 필요한 계산 횟수가 나옴 ex)27-24 = 3 (즉 1을 3번뺌)
+
+  if n<k: 
+    break
+  result +=1
+  n//=k
+
+result += (n-1)
+print(result)
+
+#-----------모범답안------------

@@ -13,3 +13,23 @@ for step in steps:
     result += 1
 
 print(result)
+#-----------------------------------------
+
+
+
+
+
+#----------------------------------------- 내 답안
+loc=input()
+
+
+odds=[(-1,2),(-1,-2),(1,2),(2,-1),(2,1),(-2,1),(-2,-1),(1,-2)]
+
+col={"a":1,"b":2,"c":3,"d":4,"e":5,"f":6,"g":7,"h":8}
+
+result=0
+for odd in odds:
+  if (col[loc[0]] + odd[0] >0 and int(loc[1])+odd[1] > 0) and (col[loc[0]] + odd[0] <8 and int(loc[1])+odd[1] < 8):
+    result+=1
+
+print(result)

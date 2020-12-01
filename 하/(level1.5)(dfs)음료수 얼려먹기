@@ -1,3 +1,5 @@
+#아이디어 : 특정 위치에서 상하좌우를 살피면서 방문하지 않은 지점(0)이 있으면 1로 만들어줌 <- 이것을 반복
+
 n,m=map(int,input().split())
 
 graph=[]
@@ -21,7 +23,7 @@ def dfs(x,y):
   return False
 
 result = 0
-for i in range(n):
+for i in range(n):      # 그래프의 모든 지점을 돌면서 반복 -> 특정 지점에서 상하좌우의 모든 지점을 처리하므로, 중첩되는 경우는 이미 1로 처리되어 카운트 하지 않음
   for j in range(m):
     if dfs(i,j)==True:
       result += 1

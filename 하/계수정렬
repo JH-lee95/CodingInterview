@@ -1,0 +1,12 @@
+count=[0] * (max(array)+1)
+
+for i in range(len(array)):
+    count[array[i]]+=1
+
+for i in range(len(count)):
+    for j in range(count[i]):
+        print(i,end=" ")
+        
+        
+ # 데이터의 범위가 한정돼 있고, 데이터들이 정수 일때 가장 좋은 성능을 보이는 정렬방법
+ # 성적처럼 데이터의 크기가 중복돼있을수록 

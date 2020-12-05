@@ -1,0 +1,28 @@
+def bs(array,target,start,end):
+  if start>end:
+    return None
+  
+  mid=(start+end)//2
+
+  array.sort()
+
+  if array[mid]==target:
+    return mid
+
+  elif array[mid]>target:
+    return bs(array,target,start,mid-1)
+
+  else:
+    return bs(array,target,mid+1,end)
+
+
+n=int(input())
+array=list(map(int,input().split()))
+m=int(input())
+x=list(map(int,input().split()))
+
+for i in x:
+  if bs(array,i,0,len(array)-1):
+    print(i , " : yes")
+  else:
+    print(i, " : no")

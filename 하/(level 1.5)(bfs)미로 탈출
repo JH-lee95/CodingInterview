@@ -7,30 +7,32 @@ graph=[]
 for i in range(n):
     graph.append(list(map(int,input())))
 
-dx=[-1,1,0,0]
+#x가 움직이는 방향 정의(상하좌우)
+dx=[-1,1,0,0] 
 dy=[0,0,-1,1]
+
 
 def bfs(x,y):
 
     queue=deque()
-    queue.append((x,y))
+    queue.append((x,y)) #큐에 x,y 쌍 추가
 
     while queue:
         x,y=queue.popleft()
 
-        for i in range(4):
-            nx=x+dx[i]
-            ny=y+dx[i]
+        for i in range(4): 상하좌우 4방향을 돌면서
+            nx=x+dx[i] #x가 움직일 공간
+            ny=y+dx[i] #y가 움직일 공간
 
-            if nx<0 or ny<0 or nx>=n or ny>=m:
+            if nx<0 or ny<0 or nx>=n or ny>=m: #움직일 공간이 조건에 해당하면 스킵
                 continue
 
-            if graph[nx][ny]==0:
+            if graph[nx][ny]==0: 
                 continue
 
-            if graph[nx][ny]==1:
-                graph[nx][ny]=graph[x][y]+1
-                queue.append((nx,ny))
+            if graph[nx][ny]==1: #움직일 공간이 1에 해당하면 
+                graph[nx][ny]=graph[x][y]+1 #1을 추가하기 (움직일 때 마다 1씩 추가)
+                queue.append((nx,ny)) #nx,ny 부터 다시 시작
 
         return graph[n-1][m-1]
 

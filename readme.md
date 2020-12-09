@@ -9,3 +9,8 @@ import sys
 input_data = sys.stdin.readline().rstrip()
 
 print(input_data)
+
+
+2. 다이나믹 프로그래밍을 사용할 수 있는 경우
+- 큰 문제를 작은 문제로 나눌 수 있다.
+- 작은 문제에서 구한 정답은 그것을 포함하는 큰 문제에서도 동일하다.

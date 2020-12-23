@@ -1,0 +1,62 @@
+# ---------------------------------- 내 코드
+
+
+
+
+n=int(input())
+x=list(map(int,input().split()))
+
+
+def create_party(x):
+  result_list=[]
+  while x:
+    x.sort(reverse=True)
+    result=[]
+
+    if len(x)>=x[0]:
+
+      min_x=x.pop()
+      result.append(min_x)
+
+      while len(result)<max(result):
+
+        try:
+          result.append(x.pop())
+        except:
+            break
+
+      result_list.append(result)
+    
+    else:
+      break
+
+  return result_list,len(result_list)
+
+
+create_party(x)
+# ---------------------------------- 내 코드
+
+
+
+
+
+
+# ---------------------------------- 답
+
+n=int(input())
+data=list(map(int,input().split())
+data.sort()
+
+result=0
+
+count=0
+
+for i in data:
+  count+=1
+  if count>=i:
+    result+=1
+    count=0
+print(result)
+
+# ---------------------------------- 답
+

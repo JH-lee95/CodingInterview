@@ -1,0 +1,24 @@
+# 럭키스트레이트
+
+n=input()
+
+mid=int(len(n)/2)
+
+left_half=n[:mid]
+right_half=n[mid:]
+
+
+left_sum=0
+right_sum=0
+for i,j in zip(left_half,right_half):
+  left_sum+=int(i)
+  right_sum+=int(j)
+
+print("left_half : ", left_half, "right_half : ",right_half)
+print("left_sum : ",left_sum,"right_sum : ",right_sum)
+
+if left_sum==right_sum:
+  print("LUCKY")  
+else:
+  print("READY")
+

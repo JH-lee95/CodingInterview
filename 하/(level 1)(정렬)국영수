@@ -1,0 +1,14 @@
+n=int(input())
+
+grades=[]
+
+for _ in range(n):
+  name,k,e,m=input().split() #이름,국어점수,영어점수,수학점수
+  grades.append((name,int(k),int(e),int(m)))
+
+
+
+grades_sorted=sorted(grades,key=lambda x:(-x[1],x[2],-x[3],x[0])) #국어점수 내림차순,영어점수 오름차순, 수학점수 내림차순, 이름 오름차순 
+
+for i in grades_sorted:
+  print(i[0])

@@ -1,0 +1,22 @@
+def bs(array):
+
+  start=0
+  end=len(array)-1
+
+  while start<=end:
+
+    mid = (start+end)//2 # 초기 인덱스를 중간값으로 설정
+
+    if array[mid]==mid: # 해당 인덱스에 해당하는 값이, 인덱스와 같다면
+      return mid
+    
+    elif array[mid]>mid: #인덱스보다 크다면
+      end=mid-1
+    
+    else: #작다면
+      start=mid+1
+
+
+  return -1
+  
+  

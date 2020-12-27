@@ -1,0 +1,57 @@
+#-----------------내 답안-------------------
+
+n=int(input())
+
+array=[]
+
+for i in range(n):
+  array.append(list(map(int,input().split())))
+
+c=array.copy()
+print(c)
+
+# 삼각형의 가장 아래변부터 확인 하기 위해 역순으로 탐색
+for i in range(len(array)-1,0,-1):
+  for j in range(len(array[i])-1):
+
+    #바로 윗줄 숫자와 대각왼쪽아래, 대각오른쪽아래 각각의 합 중 큰 숫자를 저장
+    array[i-1][j]=max((array[i][j]+array[i-1][j]),(array[i][j+1]+array[i-1][j])) 
+    print(c)
+    
+
+print(c[0][0])
+#-----------------내 답안-------------------
+
+
+#-----------------모범 답안-----------------
+n=int(input())
+
+dp=[]
+
+for _ in range(n):
+  dp.append(list(map(int,input().split())))
+
+#삼각형의 두 번째 줄부터 확인
+for i in range(1,n):
+
+  #바로 다음 줄
+  for j in range(i+1):
+
+    #왼쪽 위에서 내려오는 경우
+
+    if j==0:
+      up_left=0
+    else:
+      up_left=dp[i-1][j-1]
+    
+    # 바로 위에서 내려오는 경우
+    if j==i:
+      up=0
+    else:
+      up=dp[i-1][j]
+
+    #최대 합을 저장
+    dp[i][j]=dp[i][j]+max(up_left,up)
+
+print(max(dp[n-1]))
+#-----------------모범 답안-----------------

@@ -1,0 +1,16 @@
+s=input()
+
+result=0
+
+for n in s:
+
+  if result==0:
+    result+=int(n)
+  
+  else:
+    if n=="0" or n=="1":
+      result+=int(n)
+    else:
+      result*=int(n)
+
+print(result)

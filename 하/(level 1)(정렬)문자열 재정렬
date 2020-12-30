@@ -1,0 +1,12 @@
+new_s=""
+
+num=0
+
+for i in sorted(s):
+  try:
+    num+=int(i)
+  except:
+    new_s=new_s+i
+
+new_s=new_s+str(num)
+new_s

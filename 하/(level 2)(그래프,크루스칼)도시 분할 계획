@@ -1,0 +1,52 @@
+def find_parent(parent,x):
+  if parent[x]!=x:
+    parent[x]=find_parent(parent,parent[x])
+  return parent[x]
+
+def union_parent(parent,a,b):
+  a=find_parent(parent,a)
+  b=find_parent(parent,b)
+
+  if a<b:
+    parent[b]=a
+  else:
+    parent[a]=b
+
+
+n,m=map(int,input().split())
+
+parent=[0] * (n+1)
+
+
+edges=[]
+result=0
+
+
+for i in range(1,n+1):
+  parent[i]=i
+
+for i in range(m):
+  a,b,c=map(int,input().split())
+
+  #a에서 b로가는 비용이 c , 최소신장트리 구현을 위해 비용(c)을 0번 인덱스로 하여 정렬을 용이하게 
+  edges.append((c,a,b))
+
+#비용을 기준으로 정렬 (최소비용부터 차례대로 확인)
+edges.sort()
+
+
+#가장 높은 비용을 기록할 변수 (edges를 정렬했으므로, 가장 늦게 나오는 것이 무조건 가장 큰 비용을 가지고 있다.)
+last=0
+
+for edge in edges:
+  c,a,b=edge
+
+  #싸이클이 있는지 확인
+  if find_parent(parent,a)!=find_parent(parent,b):
+
+    #싸이클이 없으면 두 노드를 연결
+    union_parent(parent,a,b)
+    result+=c
+    last=c
+
+print(result-last)

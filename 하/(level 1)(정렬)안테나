@@ -1,0 +1,8 @@
+n=int(input())
+array=[int(input()) for _ in range(n)]
+array.sort()
+result=array[(n-1)//2] #원소의 개수가 짝수개일 경우 중간값이 여러개이므로, 경우 제일 작은 값을 도출하기 위해, 원소 개수를 홀수로 만들어준다.
+result
+
+
+#그냥 중간값을 도출하면 된다!

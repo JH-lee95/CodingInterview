@@ -1,0 +1,50 @@
+from collections import deque
+import copy
+
+#노드의 개수
+v=int(input())
+#각 노드의 진입차수
+indegree=[0] * (v+1)
+#각 노드의 시간 정보
+time=[0] * (v+1)
+#각 노드에 연결된 간선 정보를 담을 리스트
+graph=[[] for i in range(v+1)]
+
+#방향 그래프의 모든 간선 정보 입력받기
+for i in range(1,v+1):
+
+  #data는, 시간정보, 연결된 노드들, -1로 구성됨
+  data=list(map(int,input().split()))
+  #i번째 노도의 시간 정보는 data[0]
+  time[i]=data[0]
+  #i번째 노드에 연결된 각 노드들 (i로 진입하는 노드들)
+  for x in data[1:-1]:
+    indegree[i]+=1
+    graph[x].append(i)
+
+
+def topology_sort():
+  result=copy.deepcopy(time)
+  q=deque()
+
+  for i in range(1,v+1):
+    if indegree[i]==0:
+      q.append(i)
+
+  while q:
+    now=q.popleft()
+
+    #해당 원소에 연결된 노드들의 진입차수에서 1빼기
+    for i in graph[now]:
+
+      #현재까지의 최대 시간 정보
+      result[i]=max(result[i],result[now]+time[i])
+      indegree[i]-=1
+
+      if indegree[i]==0:
+        q.append(i)
+
+  for i in range(1,v+1):
+    print(result[i])
+
+topology_sort()

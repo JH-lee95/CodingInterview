@@ -1,0 +1,66 @@
+#------------내 답안------------
+
+#이진 탐색 구현 - 시간복잡도를 O(logN)으로 구현해야하므로 이진 탐색으로 주어진 배열을 탐색한다.
+def binary(array,target,start,end):
+
+  while start<=end:
+    mid=(start+end)//2
+
+    if array[mid]==target:
+      return mid
+    elif array[mid]<target:
+      start=mid+1
+    else:
+      end=mid-1
+
+  return None
+  
+  
+# 배열내 원소의 개수와, 찾을 숫자 입력 받기
+n,x=map(int,input().split)
+
+#배열에 원소 추가하기
+for _ in range(n):
+  array.append(int(input()))
+  
+#결과를 담을 변수
+result=0
+
+#이진 탐색을 통해 배열내에서 x를 찾는다
+while True:
+  temp=binary(array,x,0,len(array))
+
+  #x를 찾았으면 result에 1을 더해주고, 배열에서 해당 인덱스를 삭제해준다.
+  if temp!=None:
+    result+=1
+    array.pop(temp)
+  else:
+    break
+
+result
+#------------내 답안------------
+
+
+#------------모범 답안------------
+# 아이디어 : x가 값이 가장 마지막으로 등장하는 인덱스에서, 가장 처음으로 등장하는 인덱스를 빼준다.
+# bisect 라이브러리 활용
+
+def count_by_range(array,left_value,right_value):
+  #bisect_right은 찾고자 하는 숫자가 여러개일 경우 가장 오른쪽의 인덱스를 가져온다.
+  right_index=bisect_right(array,right_value)
+  left_index=bisect_left(array,left_value)
+
+  return right_index-left_index
+
+
+# 배열내 원소의 개수와, 찾을 숫자 입력 받기
+n,x=map(int,input().split())
+#배열에 원소 추가하기
+array=list(map(int,input().split()))
+
+count=count_by_range(array,x,x)
+
+if count==0:
+  print(-1)
+else:
+  print(count)

@@ -1,0 +1,44 @@
+for tc in range(int,input()):
+
+    n,m=map(int,input().split())
+    array=list(map(int,input().split))
+
+    array=np.asarray(array)
+
+    #행렬 전치
+    array=array.T
+
+
+
+  for i in range(n-1,-1,-1):
+    print(dp)
+    for j in range(m):
+      
+      #인덱스 오류 방지를 위한 try,excpet 구문
+      #up:대각선 위, mid: 중간 , bottom : 대각선 아래
+      try:
+        if j==0:
+          mid=dp[j]+array[i][j]
+          bottom=dp[j]+array[i][j+1]
+
+          dp[j]=max(mid,bottom)
+        
+        elif j==1:
+
+          up=dp[j]+array[i][j-1]
+          mid=dp[j]+array[i][j]
+          bottom=dp[j]+array[i][j+1]
+
+          dp[j]=max(up,mid,bottom)
+        
+        else:
+          mid=dp[j]+array[i][j]
+          up=dp[j]+array[i][j-1]
+
+          dp[j]=max(up,mid)
+
+      except:
+        continue
+
+
+  print(max(dp))

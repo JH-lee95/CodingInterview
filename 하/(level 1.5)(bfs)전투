@@ -1,0 +1,71 @@
+문제 링크: https://www.acmicpc.net/problem/1303
+dx,dy를 통해 상하좌우로 움직이는 방향을 설정해주는 것이 핵심
+
+### 코드 시작 ###
+
+#맵의 크기 입력 받기
+n,m=map(int,input().split())
+
+#맵 상태 입력 받기
+array=[]
+for i in range(n):
+  array.append(list(input().split()))
+
+#방문 여부 확인을 위한 리스트
+visited=[[False] * 5 for i in range(n)]
+
+
+#상하좌우 움직일 방향 설정 (2차원 리스트에서, 행과 열 방향으로 움직인다)
+dx=[-1,1,0,0]
+dy=[0,0,-1,1]
+
+#bfs 구현
+def bfs(x,y):
+  
+  #queue를 이용한 구현
+  q=deque()
+  
+  #x,y 위치에서 탐색을 시작
+  q.append((x,y))
+  
+  #x,y는 방문 처리
+  visited[x][y]=True
+  
+  #연결된 개수를 저장할 변수
+  count=1
+  
+  #q에 원소가 없어질 때 까지
+  while q:
+    #현재 위치 추출
+    x,y=q.popleft()
+    
+    #4방향 (상하좌우)
+    for i in range(4):
+      nx=x+dx[i] #x의 다음 위치 (즉 상 또는 하)
+      ny=y+dy[i] #y의 다음 위치 (즉 좌 또는 우)
+
+      if 0<=nx<n and 0<=ny<m and array[nx][ny]==array[x][y] and visited[nx][ny]==False:
+        
+        # 해당 조건을 만족하면 q에 추가
+        q.append((nx,ny))
+        visited[nx][ny]=True
+        count+=1
+
+  return count
+  
+  
+w,b=0,0
+
+for i in range(n):
+  for j in range(m):
+    if visited[i][j]==False:
+      ans=bfs(i,j)
+      if array[i][j]=="W":
+        w+=ans**2
+      else:
+        b+=ans**2
+
+print(w,b)
+
+### 코드 종료 ###
+

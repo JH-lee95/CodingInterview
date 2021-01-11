@@ -1,0 +1,60 @@
+#도시와 여행계획의 수 입력 받기
+n,m=map(int,input().split())
+
+#연결상태를 담을 리스트(인접행렬)
+graph=[]
+
+for i in range(5):
+  graph.append(list(map(int,input().split())))
+
+#여행계획 입력 받기
+plan=list(map(int,input().split()))
+
+# 서로소 집합을 이용
+
+#재귀적으로 부모 찾기
+def find_parent(parent,x):
+  if parent[x]!=x:
+    parent[x]=find_parent(parent,parent[x])
+  return parent[x]
+
+#부모-자식 관계 만들기
+def union_parent(parent,a,b):
+  a=find_parent(parent,a)
+  b=find_parent(parent,b)
+  
+  if a<b:
+    parent[b]=a
+  else:
+    parent[a]=b
+
+
+# 부모테이블 만들기
+parent=[0 for i in range(n+1)]
+
+# 부모를 자기 자신으로 초기화
+for i in range(1,n+1):
+  parent[i]=i
+
+#인접행렬을 순회하면서, 서로소 알고리즘 수행
+for i in range(n):
+  for j in range(n):
+      #서로 연결돼 있을 때만 서로소 알고리즘을 수행
+      if graph[i][j]==1:
+        union_parent(parent,i+1,j+1)
+      
+
+
+#여행계획내의 도시들의 부모 노드가 모두 같은지 확인
+
+check=True
+
+for i in range(len(plan)-1):
+  if parent[plan[i]]!=parent[plan[i+1]]:
+    check=False
+
+if check:
+  print("YES")
+
+else:
+  print("No")

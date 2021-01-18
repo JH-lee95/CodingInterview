@@ -1,0 +1,49 @@
+# t값 입력 받기
+
+t=int(input("t : "))
+
+#가격을 저장할 리스트
+stock=[]
+
+for _ in range(t+1):
+  stock.append(int(input()))
+  
+  #극댓값 찾기
+
+def local_maximum(stock):
+
+  #극댓값을 담을 리스트
+  result=[]
+
+  for i in range(1,t):
+
+    if stock[i-1]<stock[i] and stock[i]>stock[i+1]:
+      result.append(i)
+
+    if i==t and stock[i]>stock[i-1]:
+      result.append(i)
+
+    if i==0 and stock[i]>stock[i+1]:
+      result.append(i)
+
+  return result
+  
+  
+#사이즈와 회복지점을 담을 리스트
+mdd_list=[]
+
+#mdd의 사이즈 및 회복지점 구하기
+for m in local_max:
+  for i in range(t):
+    if i!=m and stock[i]>=stock[m]:
+      mdd_list.append((stock[m]-min(stock[m:i]),i))
+      break
+
+#mdd의 사이즈를 기준으로 정렬
+mdd_list=sorted(mdd_list,key=lambda x:x[1],reverse=True)
+mdd_list
+
+
+k=int(input()) #k값 입력받기
+
+print(mdd_list[:k])

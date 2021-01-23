@@ -1,0 +1,37 @@
+#----- 내 답안 (ver1)-----
+
+def solution(prices):
+    
+    answer = [0]*len(prices)
+    
+    for i in range(len(prices)-1):
+        for j in range(i+1,len(prices)):
+            answer[i]+=1
+            
+            if prices[i]>prices[j]:
+                break
+    return answer
+ 
+#----- 내 답안 (ver1)-----
+
+
+#----- 내 답안 (ver2, 효율성 통과 실패)-----
+
+# 이렇게 풀면 효율성에서 문제가 생긴다.
+# 일단 내부 for문에서 슬라이싱을 반복하면서 비효율이 발생하고, append에서 또 비효율이 발생하는 것으로 보인다.
+# 리스트에 append를 통해 원소를 추가하는것이, 리스트내의 값에 +1을 해주는 것보다 연산이 더 많은가보다......
+
+def solution(prices):
+    
+    answer = []
+    
+    for i in range(len(prices)):
+        second=0
+        for j in prices[i+1:]:
+            second+=1
+            if prices[i]>j:
+                break
+        answer.append(second)
+    return answer
+    
+#----- 내 답안 (ver2, 효율성 통과 실패)-----

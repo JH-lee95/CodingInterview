@@ -1,0 +1,36 @@
+###### 내 답안 ######
+
+def solution(citations):
+    
+    if  len(citations)==0:
+        return 0
+    
+    
+    citations.sort()
+    
+    for i in range(len(citations)):
+        if citations[i]==len(citations[i:]):
+            return citations[i]
+        elif citations[i]>len(citations[i:]):
+            h=citations[i]
+            
+            while h>len(citations[i:]):
+                h-=1
+            return h
+        
+    return 0 #0으로만 이루어진 경우
+    
+###### 내 답안 ######
+
+
+###### 모범 답안 ######
+
+def solution(citations):
+    citations.sort(reverse=True)
+    answer = max(map(min, enumerate(citations, start=1)))
+    return answer
+    
+    
+    #너무나도 pythonic한 답안이다.
+    #고민좀 해봐야겠다.
+###### 모범 답안 ######

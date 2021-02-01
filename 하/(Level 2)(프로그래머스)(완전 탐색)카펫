@@ -1,0 +1,26 @@
+def solution(brown, yellow):
+    
+    if yellow==1:
+        return [(brown+yellow)/3,3]
+    
+    
+    #i는 노란딱지의 층 수 
+    #ex) yellow가 6일 경우, 6개 1층, 3개 2층, 2개 3층 
+    for i in range(1,yellow//2+1):
+        
+        #나누어 떨어질 때만 층수를 나누고, 가로길이가 세로길이 이상이어야함
+        row = yellow/i #가로
+        col = i # 세로
+        if yellow%i==0 and (row>=col):
+            #전체 타일의 개수
+            total = (row+2)*(col+2)
+            #필요한 갈색 타일의 개수
+            brwon_temp=total-yellow
+           
+       
+        if brwon_temp==brown:
+            return [row+2,col+2]
+            
+            
+            
+  # for 문의 range의 범위를 yellow//2+1이 아니라 int(sqrt(yellow))+1 로 제한하면 탐색 범위를 더 줄일 수 있다.

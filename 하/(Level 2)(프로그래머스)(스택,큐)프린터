@@ -1,0 +1,20 @@
+def solution(priorities, location):
+    
+    new_list=[] #(중요도,location)을 저장할 리스트
+    for idx,p in enumerate(priorities):
+        new_list.append((p,idx))
+    count=0
+    
+    while len(new_list)>1: #new_list의 길이가 1보다 클 때만 (max는 길이가 0일 경우 계산할 수 없으므로)
+        crt=new_list.pop(0)
+        
+        if crt[0]>=max(new_list)[0]:
+            count+=1
+            if crt[1]==location:
+        
+                return count
+        
+        else:
+            new_list.append(crt)
+            
+    return count+1 #원소가 하나밖에 안남았을 경우

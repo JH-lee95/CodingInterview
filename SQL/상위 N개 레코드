@@ -1,0 +1,7 @@
+# https://programmers.co.kr/learn/courses/30/lessons/59405?language=oracle
+
+#1번 방법, 인라인 뷰
+SELECT A.* FROM (SELECT NAME FROM ANIMAL_INS ORDER BY DATETIME ASC) A WHERE ROWNUM=1;
+
+#2번 방법, LIMIT (오라클)
+SELECT NAME FROM ANIMAL_INS ORDER BY DATETIME LIMIT 1

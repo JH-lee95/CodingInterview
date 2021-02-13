@@ -1,0 +1,43 @@
+#다익스트라로 구현
+
+import heapq
+
+def solution(n,edge):
+
+    INF=int(1e9) #초기 비용은 아주 큰 수로 설정
+    distance=[INF]*(n+1)
+    
+    graph=[[] for i in range(n+1)] #그래프 상태를 담을 리스트 
+    
+    for a,b in edge:
+        graph[a].append((b,1)) #a,b로 가는 비용이 1
+        graph[b].append((a,1)) #b,a로 가는 비용도 1(양방향)
+        
+    q=[]
+    heapq.heappush(q,(0,1)) #우선순위힙 이용, 1번 노드에서 다른 노드로 가능 비용을 탐색하므로, 시작점을 1로 설정
+    distance[1]=0 #1번에서 1번으로 가능 비용은 0
+    
+    while q:
+        dist,now=heapq.heappop(q)
+        
+        if distance[now]<dist:
+            continue
+            
+        for i in graph[now]:
+            cost=dist+i[1]
+            
+            if cost<distance[i[0]]:
+                distance[i[0]]=cost
+                heapq.heappush(q,(cost,i[0]))  
+    result=[]
+    for i in range(1,n+1):
+        result.append(distance[i])
+        
+    answer=0
+    
+    for i in result:
+        if i==max(result):
+            answer+=1
+            
+    return answer
+    

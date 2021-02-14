@@ -1,0 +1,7 @@
+#https://programmers.co.kr/learn/courses/30/lessons/59038
+
+#1번
+SELECT MIN(DATETIME) FROM ANIMAL_INS;
+
+#2번
+SELECT datetime from ANIMAL_INS order by datetime limit 1;

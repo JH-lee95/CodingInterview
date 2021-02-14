@@ -1,0 +1,18 @@
+# https://programmers.co.kr/learn/courses/30/lessons/59410
+
+#1번 , IFNULL(컬럼,EXPRESSION) 컬럼에서 특정 데이터가 NULL 인 경우, EXPRESSION으로 변환
+SELECT ANIMAL_TYPE,IFNULL(NAME,"No name"),SEX_UPON_INTAKE FROM ANIMAL_INS;
+
+#2번, CASE WHEN ~ THEN 
+SELECT ANIMAL_TYPE
+      ,CASE WHEN NAME IS NULL THEN 'No name' else NAME END NAME 
+      ,SEX_UPON_INTAKE
+FROM ANIMAL_INS
+
+#3번, NVL (Oracle)
+SELECT ANIMAL_TYPE, NVL(NAME,"No name") FROM ANIMAL_INS;
+
+#4번,COALESCE(exp1,exp2,exp3,...) 첫번째로 NULL이 아닌 값 반환
+SELECT animal_type, COALESCE(name, 'No name'), sex_upon_intake FROM animal_ins
+    ORDER BY animal_id
+    

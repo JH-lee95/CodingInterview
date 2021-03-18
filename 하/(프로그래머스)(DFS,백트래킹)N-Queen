@@ -1,0 +1,34 @@
+answer=0
+
+def nqueen(index,col,n):
+    global answer
+    
+    if promising(index,col):
+        if index==n:
+            answer+=1
+        else:
+            for i in range(1,n+1):
+                col[index+1]=i
+                nqueen(index+1,col,n)
+
+def promising(index,col):
+    for k in range(1,index):
+        if col[index]==col[k] or abs(col[index]-col[k])==index-k:
+            return False
+        
+    return True
+
+
+
+def solution(n):
+    global answer
+    
+    col=[0] * (n+1)
+    
+    nqueen(0,col,n)
+    
+    return answer
+    
+    
+    
+ # 이게 어떻게 연습문제 수준이지....?

@@ -1,0 +1,71 @@
+#----------bfs 풀이-----------
+n=int(input())
+a,b=map(int,input().split())
+m=int(input())
+
+array=[ [] for _ in range(n+1)]
+
+for _ in range(m):
+  x,y=map(int,input().split())
+  array[x].append(y)
+  array[y].append(x)
+
+from collections import deque
+
+def bfs(graph,visited,start):
+
+  queue=deque([start])
+  visited[start]=1
+
+  while queue:
+    v=queue.popleft()
+    print(v,end = " ")
+
+    for i in graph[v]:
+      if not visited[i]:
+        queue.append(i)
+        visited[i]=visited[v]+1
+
+bfs(array,visited,7)
+
+if visited[b]==0:
+  print(-1)
+else:
+  print(visited[b]-1)
+#----------bfs 풀이-----------
+
+#----------dfs 풀이-----------
+#다들 bfs로 풀길래 dfs로도 풀어보았다. 촌수관계가 트리관계(부모-자식)에 기반한다는 것을 염두에 두었다.
+
+result=[]
+
+
+def dfs(graph,visited,start):
+
+  global result
+
+  result.append(start)
+
+  visited[start]=1
+
+  for i in graph[start]:
+      if not visited[i]:
+        dfs(graph,visited,i)
+
+dfs(array,visited,7)
+
+cnt=-1
+
+if b not in result:
+  print(-1)
+
+else:
+  for i in result:
+    cnt+=1
+
+    if i == b:
+      break
+
+print(cnt)
+
+#----------dfs 풀이-----------

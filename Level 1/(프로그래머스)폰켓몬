@@ -1,0 +1,27 @@
+###내 풀이###
+
+def solution(nums):
+    answer=0
+    
+    
+    n=len(nums)/2
+    
+    nums=set(nums)
+    
+    if len(nums)>=n:
+         answer=n
+    else:
+        answer=len(nums)
+    
+    
+    return answer
+###내 풀이###
+
+
+## 모범답안 ##
+
+def solution(nums):
+    return min(len(set(nums)),len(nums)/2)
+    
+    
+# 조건문이 필요 없이 min으로 하면 간단하게 풀이가 가능하다.

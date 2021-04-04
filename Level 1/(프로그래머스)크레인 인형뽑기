@@ -1,0 +1,34 @@
+import numpy as np
+
+def solution(board, moves):
+    basket=[]
+    answer=0
+    
+    
+    board=np.array(board).T
+    
+    for move in moves:
+    
+     for i,doll in enumerate(board[move-1]):
+            
+            if doll:
+                
+                if len(basket)==0:
+                    basket.append(doll)
+                    board[move-1][i]=0
+                    break
+                
+                if doll==basket[-1]:
+                    answer+=2
+                    board[move-1][i]=0
+                    basket.pop()
+                    break
+                else:
+                 basket.append(doll)
+                 board[move-1][i]=0
+                 break
+    return answer
+    
+    
+    
+   # 이게 왜 레벨1이지..? 
